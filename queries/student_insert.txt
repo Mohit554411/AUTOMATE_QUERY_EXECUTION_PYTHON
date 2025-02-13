@@ -6,5 +6,9 @@ test.students([
     {
       name:"John Doe",
       subject:"Math"
+    },
+    {
+        name:"Raj Kumar",
+        subject:"Math"
     }
 ])
