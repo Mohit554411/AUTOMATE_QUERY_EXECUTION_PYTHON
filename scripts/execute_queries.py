@@ -30,6 +30,7 @@ def execute_queries():
     for file in files:
         print(f"Executing {file}...")
         query_file_path = os.path.join(queries_dir, file)
+        print(f"Query file path: {query_file_path}")
         if not os.path.exists(query_file_path):
             print(f"File not found: {query_file_path}")
             return False

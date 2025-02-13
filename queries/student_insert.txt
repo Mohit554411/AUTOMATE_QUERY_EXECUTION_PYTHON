@@ -1,4 +1,4 @@
-test.students([
+test.students.insertMany([
     {
       name:"Mohit Kumar,
       subject:"Math"
