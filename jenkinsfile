@@ -10,7 +10,7 @@ pipeline {
             steps {
                 echo 'Checking out code...'
                 // Checkout the code from the repository
-                git branch: 'master', url: 'https://github.com/Mohit554411/AUTOMATE_QUERY_EXECUTION_PYTHON'
+                git branch: 'master', url: 'https://github.com/Mohit554411/automate_query_execution_python'
             }
         }
 
