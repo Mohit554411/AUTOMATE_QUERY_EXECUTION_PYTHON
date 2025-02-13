@@ -1,44 +1,49 @@
 pipeline {
     agent any
+
     environment {
-        PYTHON_HOME = 'C:/Program Files/Python312'  // Update this path to your Python installation
-        MONGOSH_HOME = 'C:/Program Files/MongoDB/mongosh/bin'  // Update this path to your mongosh installation
-        PATH = "${env.PYTHON_HOME};${env.MONGOSH_HOME};${env.PATH}"
+        PYTHON_HOME = 'C:\\Program Files\\Python312'  // Update this path to your Python installation
+        MONGOSH_HOME = 'C:\\Program Files\\MongoDB\\mongosh\\bin'  // Update this path
+        PATH = "${PYTHON_HOME};${MONGOSH_HOME};${env.PATH}"
     }
+
     stages {
         stage('Checkout') {
             steps {
                 echo 'Checking out code...'
-                // Checkout the code from the repository
                 git branch: 'master', url: 'https://github.com/Mohit554411/automate_query_execution_python'
             }
         }
 
         stage('Detect New Queries') {
-            steps {
-                script {
-                    echo 'Detecting new queries...'
-                    // Detect new query files and write their paths to new_queries.txt
-                    def newQueries = bat(script: 'git diff --name-only HEAD~1 HEAD | findstr /R /C:"queries/"', returnStdout: true).trim()
-                    if (newQueries) {
-                        writeFile file: 'scripts/new_queries.txt', text: newQueries
-                    } else {
-                        error 'No new queries detected'
-                    }
-                }
+    steps {
+        script {
+            echo 'Detecting new queries...'
+
+            // Get newly added query files (files in Queries/ that changed in the last commit)
+            def newQueries = bat(script: 'git diff --name-only HEAD~1 HEAD | findstr "Queries/"', returnStdout: true).trim()
+             echo "New Queries Detected:\n${newQueries}"
+            if (newQueries) {
+                writeFile file: 'scripts/new_queries.txt', text: newQueries
+                echo "✅ New Queries Detected:\n${newQueries}"
+            } else {
+                error '❌ No new queries detected. Skipping execution.'
             }
         }
+    }
+}
+
 
         stage('Execute Queries') {
             steps {
-                // Run the execute_queries.py script
                 echo 'Executing queries...'
-                sh 'python scripts/execute_queries.py'
+                bat 'python scripts/execute_queries.py'
             }
         }
+
         stage('Cleanup') {
             steps {
-                // Clear the new_queries.txt file
+                echo 'Cleaning up...'
                 writeFile file: 'scripts/new_queries.txt', text: ''
             }
         }

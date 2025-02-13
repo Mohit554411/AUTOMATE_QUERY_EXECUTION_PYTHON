@@ -1,0 +1,10 @@
+test.students([
+    {
+      name:"Mohit Kumar,
+      subject:"Math"
+    },
+    {
+      name:"John Doe",
+      subject:"Math"
+    }
+])

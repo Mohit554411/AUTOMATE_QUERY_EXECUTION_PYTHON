@@ -1,4 +1,0 @@
-test.users.insert({
-    name:"john doe",
-    createdAt: new Date()
-})
