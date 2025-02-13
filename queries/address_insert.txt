@@ -1,6 +1,11 @@
-test.address.deleteMany({
-    $or: [
-        { state: "Bihar", pincode: "825696" },
-        { state: "Punjab", pincode: "235689" }
-    ]
-});
+test.address.insertMany([
+    { state: "Bihar", pincode: "825696", city: "Patna" },
+    { state: "Punjab", pincode: "235689", city: "Amritsar" },
+    { state: "Maharashtra", pincode: "400001", city: "Mumbai" },
+    { state: "Karnataka", pincode: "560001", city: "Bangalore" },
+    { state: "Tamil Nadu", pincode: "600001", city: "Chennai" },
+    { state: "West Bengal", pincode: "700001", city: "Kolkata" },
+    { state: "Uttar Pradesh", pincode: "110001", city: "Lucknow" },
+    { state: "Rajasthan", pincode: "302001", city: "Jaipur" }
+]);
+
