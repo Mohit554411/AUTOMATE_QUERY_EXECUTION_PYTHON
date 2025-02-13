@@ -1,10 +1,6 @@
-test.address.insertMany([
-    {
-        state:"Bihar",
-        pincode:"825696"
-    },
-    {
-        state:"Punjab",
-        pincode:"235689"
-    }
-])
+test.address.deleteMany({
+    $or: [
+        { state: "Bihar", pincode: "825696" },
+        { state: "Punjab", pincode: "235689" }
+    ]
+});
