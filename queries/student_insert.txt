@@ -1,14 +1,15 @@
 test.students.insertMany([
     {
-      name:"Mohit Kumar,
-      subject:"Math"
+      name: "Suraj",
+      email: "mohit@example.com",
+      age: 25,
+      subject: "Math",
+      createdAt: new Date()
     },
     {
-      name:"John Doe",
-      subject:"Math"
-    },
-    {
-        name:"Raj Kumar",
-        subject:"Math"
-    }
-])
+      name: "Sandeep",
+      email: "amit@example.com",
+      age: 28,
+      subject: "Math",
+      createdAt: new Date()
+    }])
