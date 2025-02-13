@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+    environment {
+        PYTHON_HOME = 'C:/Program Files/Python312'  // Update this path to your Python installation
+        MONGOSH_HOME = 'C:/Program Files/MongoDB/mongosh/bin'  // Update this path to your mongosh installation
+        PATH = "${env.PYTHON_HOME};${env.MONGOSH_HOME};${env.PATH}"
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Checking out code...'
+                // Checkout the code from the repository
+                git branch: 'master', url: 'https://github.com/Mohit554411/AUTOMATE_QUERY_EXECUTION_PYTHON'
+            }
+        }
+
+        stage('Detect New Queries') {
+            steps {
+                script {
+                    echo 'Detecting new queries...'
+                    // Detect new query files and write their paths to new_queries.txt
+                    def newQueries = bat(script: 'git diff --name-only HEAD~1 HEAD | findstr /R /C:"queries/"', returnStdout: true).trim()
+                    if (newQueries) {
+                        writeFile file: 'scripts/new_queries.txt', text: newQueries
+                    } else {
+                        error 'No new queries detected'
+                    }
+                }
+            }
+        }
+
+        stage('Execute Queries') {
+            steps {
+                // Run the execute_queries.py script
+                echo 'Executing queries...'
+                sh 'python scripts/execute_queries.py'
+            }
+        }
+        stage('Cleanup') {
+            steps {
+                // Clear the new_queries.txt file
+                writeFile file: 'scripts/new_queries.txt', text: ''
+            }
+        }
+    }
+}
