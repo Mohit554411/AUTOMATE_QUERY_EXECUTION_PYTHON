@@ -31,7 +31,7 @@ def execute_queries():
         print(f"Executing {file}...")
         query_file_path = os.path.join(queries_dir, file)
         if not os.path.exists(query_file_path):
-            print(f"❌ File not found: {query_file_path}")
+            print(f"File not found: {query_file_path}")
             return False
 
         with open(query_file_path, "r") as qf:
@@ -40,11 +40,11 @@ def execute_queries():
             match = re.match(r"^([a-zA-Z0-9_]+)\.([a-zA-Z0-9_]+)\.", query)
 
             if not match:
-                print(f"❌ Error: No valid database and collection found in {file}")
+                print(f"Error: No valid database and collection found in {file}")
                 return
 
             db_name = match.group(1)  # Extracted database name
-            print(f"🔍 Extracted Database Name: {db_name}")
+            print(f"Extracted Database Name: {db_name}")
 
             # Replace database name with "db" for execution
             query = query.replace(f"{db_name}.", "db.", 1)
@@ -57,10 +57,10 @@ def execute_queries():
             log.write(f"Executing {file}:\n{result.stdout}\n{result.stderr}\n")
 
         if result.returncode != 0:
-            print(f"❌ Execution failed for {file}")
+            print(f"Execution failed for {file}")
             return False
 
-    print("✅ All queries executed successfully.")
+    print("All queries executed successfully.")
     return True
 
 if __name__ == "__main__":
