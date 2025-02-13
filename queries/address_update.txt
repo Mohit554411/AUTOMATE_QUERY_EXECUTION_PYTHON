@@ -1,0 +1,4 @@
+test.address.updateMany(
+    { state: "Bihar" }, 
+    { $set: { pincode: "826000" } }
+);
