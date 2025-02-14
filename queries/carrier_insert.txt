@@ -1,10 +1,10 @@
 test.carrier.insertMany([
     {
-        carrier:"MSC",
+        carrier:"MASERK",
         createdAt: new Date()
     },
     {
-        carrier:"MSC",
+       carrier:"CMA",
         createdAt: new Date()
     }
 ])
