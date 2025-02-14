@@ -1,15 +1,11 @@
 CoreTE1.users.insertMany([
     {
-      name: "Suraj",
+      name: "Mohit",
       email: "mohit@example.com",
-      age: 25,
-      subject: "Math",
       createdAt: new Date()
     },
     {
       name: "Sandeep",
       email: "amit@example.com",
-      age: 28,
-      subject: "Math",
       createdAt: new Date()
     }])

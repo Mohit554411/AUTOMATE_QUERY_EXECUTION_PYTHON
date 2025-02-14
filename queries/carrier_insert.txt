@@ -1,10 +1,10 @@
 IntegrationTE1.carriers.insertMany([
     {
-        carrier:"MASERK",
+        carrier:"COSCO",
         createdAt: new Date()
     },
     {
-       carrier:"CMA",
+       carrier:"HYundai",
         createdAt: new Date()
     }
 ])

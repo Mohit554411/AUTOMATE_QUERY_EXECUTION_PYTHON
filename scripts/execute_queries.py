@@ -51,6 +51,7 @@ def execute_queries():
             query = query.replace(f"{db_name}.", "db.", 1)
             query = query.replace('"', '\\"')
             print(f"Modified query: {query}")
+            print(f'mongosh "{MONGO_URI}/{db_name}" --eval "{query}"')
         command = f'mongosh "{MONGO_URI}/{db_name}" --eval "{query}"'
         result = subprocess.run(command, shell=True, capture_output=True, text=True)
 
