@@ -1,4 +1,4 @@
-CoreT1.students.insertMany([
+CoreTE1.users.insertMany([
     {
       name: "Suraj",
       email: "mohit@example.com",

@@ -1,4 +1,4 @@
-IntegrationTE1.carrier.insertMany([
+IntegrationTE1.carriers.insertMany([
     {
         carrier:"MASERK",
         createdAt: new Date()
