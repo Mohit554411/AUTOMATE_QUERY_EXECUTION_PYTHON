@@ -1,4 +1,4 @@
-test.students.insertMany([
+test.users.insertMany([
     {
       name: "Mohit Kumar",
       email: "mohit@example.com",
@@ -7,7 +7,7 @@ test.students.insertMany([
       createdAt: new Date()
     },
     {
-      name: "Amit Sharma",
+      name: "Shubham Singh",
       email: "amit@example.com",
       age: 28,
       subject: "Math",
