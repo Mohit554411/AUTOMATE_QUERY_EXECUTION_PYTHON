@@ -1,0 +1,9 @@
+test.DataMonitoringAlertAudit.insertOne({
+    "reportName" : "Testing Automate Query",
+	"toAddress" : "mohit_kumar@trimble.com",
+	"resolved" : true,
+	"carrier" : "Wan Hai Lines",
+	"source" : "WEB",
+	"createdAt: new Date(),
+	"noOfOccurrences" : 23
+})
